@@ -2,41 +2,46 @@ import Home from "./pages/Home";
 import Layout from "./pages/Layout";
 import Nopage from "./pages/Nopage";
 import Cart from "./pages/Cart";
-import { BrowserRouter, Routes, Route } from "react-router-dom";
+import commerce from "./lib/commerce";
+import { BrowserRouter, Routes, Route, createMemoryRouter } from "react-router-dom";
 import "./App.css";
+import React from "react";
 
-const products = [
-  {
-    name: "Samsung S22",
-    price: "1200 $",
-    image: "https://picsum.photos/500/300?random=2",
-  },
-
-  {
-    name: "Iphone 13",
-    price: "1300 $",
-    image: "https://picsum.photos/500/300?random=3",
-  },
-
-  {
-    name: "Iphone 14",
-    price: "1300 $",
-    image: "https://picsum.photos/500/300?random=5",
-  },
-
-  {
-    name: "Iphone 15",
-    price: "1300 $",
-    image: "https://picsum.photos/500/300?random=99",
-  },
-];
+//
 
 function App() {
+  const [products, setProducts] = React.useState([]);
+  const [carts, setCarts]= React.useState([{}]);
+
+  const fetchProducts = async () => {
+    const { data } = await commerce.products.list();
+    setProducts(data);
+  };
+
+    const fetchCart = async () => {
+      const item = commerce.cart.retrive();
+      setCarts(item);
+
+    }
+  React.useEffect(() => {
+    fetchProducts();
+    fetchCart();
+  }, []);
+
+  const handleAddToCart = async (productId, quantity) => {
+      const cartItem = await commerce.cart.add(productId, quantity);
+      setCarts(cartItem)
+    
+  }
+    console.log(carts);
+
   return (
     <BrowserRouter>
       <Routes>
-        <Route path="/" element={<Layout />}>
-          <Route index element={<Home product={products} />} />
+        <Route path="/" element={<Layout totalItem={carts.line_items} />}>
+          <Route index element={<Home products={products} onAddToCart={handleAddToCart
+          } />} />
+
           <Route path="cart" element={<Cart />} />
         </Route>
         <Route path="*" element={<Nopage />} />

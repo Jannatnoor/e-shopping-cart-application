@@ -1,6 +1,6 @@
 import { Outlet, Link } from "react-router-dom";
 
-const Layout = () => {
+const Layout = ({totalItem}) => {
   return (
     <>
       <nav>
@@ -11,7 +11,11 @@ const Layout = () => {
           </li>
         
           <li>
-            <Link to= "/cart">Cart</Link>
+            <Link to= "/cart">
+            Cart{".."}
+            <span className="badge"> {totalItem?.length}</span>
+            
+            </Link>
           </li>
         </ul>
       </nav>

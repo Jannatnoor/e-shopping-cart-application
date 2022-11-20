@@ -1,10 +1,12 @@
+import { computeHeadingLevel } from "@testing-library/react";
 import React from "react";
 import Listitem from "../components/Listitem";
 
-const Home = ({product}) => {
+const Home = ({products, onAddToCart}) => {
+
   
   return <div>
-      <Listitem items={product} />
+      <Listitem items={products} onAddToCart ={onAddToCart} />
       
   </div>
   

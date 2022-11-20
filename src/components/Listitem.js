@@ -1,12 +1,12 @@
 import React from 'react'
 import Item from './Item'
 
-const Listitem = ({items}) => {
+const Listitem = ({items, onAddToCart}) => {
       
   return (
     <div className='items'>
     {items.map(element=> (
-       <Item name={element.name} price={element.price} image={element.image} /> 
+       <Item id={element.id} img={element.image.url} name={element.name} price={element.price.formatted_with_symbol} desc={element.description} onAddToCart={onAddToCart}/> 
     ))};
     
 
