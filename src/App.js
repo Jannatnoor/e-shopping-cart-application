@@ -3,7 +3,7 @@ import Layout from "./pages/Layout";
 import Nopage from "./pages/Nopage";
 import Cart from "./pages/Cart";
 import commerce from "./lib/commerce";
-import { BrowserRouter, Routes, Route, createMemoryRouter } from "react-router-dom";
+import { BrowserRouter, Routes, Route } from "react-router-dom";
 import "./App.css";
 import React from "react";
 
@@ -33,7 +33,6 @@ function App() {
       setCarts(cartItem)
     
   }
-    console.log(carts);
 
   return (
     <BrowserRouter>
@@ -42,7 +41,7 @@ function App() {
           <Route index element={<Home products={products} onAddToCart={handleAddToCart
           } />} />
 
-          <Route path="cart" element={<Cart />} />
+          <Route path="cart" element={<Cart cartItem= {carts} />} />
         </Route>
         <Route path="*" element={<Nopage />} />
       </Routes>
