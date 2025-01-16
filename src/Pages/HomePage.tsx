@@ -9,14 +9,14 @@ import SortByPriceOrder from '../components/SortByPriceOrder';
 import { fetchAllCategories } from '../services/reducers/categoryReducer';
 import Pagination from '../components/Pagination';
 import ProductList from '../components/ProductList';
-import SortByCategory from '../components/SortByCategory';
+
 import './styles/HomePage.scss';
 
 const HomePage: React.FC = () => {
   const dispatch = useAppDispatch();
 
   const [search, setSearch] = useState<string | undefined>();
-  const [category, setCategory] = useState(100);
+  const [category, setCategory] = useState<number>(100);
   const [priceSort, setPriceSort] = useState<'Low' | 'High'>('Low');
   const [currentpage, setCurrentpage] = useState(1);
   const [ProductPerPage, setProductPerPage] = useState(4);
@@ -47,6 +47,13 @@ const HomePage: React.FC = () => {
     dispatch(sortByPrice(priceSort));
     setPriceSort(priceSort === 'Low' ? 'High' : 'Low');
   };
+
+  const handleCategoryChange = (newCategory: unknown) => {
+  if (typeof newCategory === 'number') {
+    setCategory(newCategory);
+  }
+};
+
 
   return (
     <div className="home-page">
