@@ -1,0 +1,86 @@
+$primary-color: #4a90e2;
+$text-primary: #2d3748;
+$text-secondary: #718096;
+$background-color: #f7fafc;
+
+.profile-container {
+  min-height: 100vh;
+  width: 100%;
+  background: $background-color;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 2rem 1rem;
+
+  @media (min-width: 768px) {
+    padding: 4rem 2rem;
+  }
+
+  h1 {
+    color: $text-primary;
+    font-size: 2rem;
+    font-weight: 600;
+    margin-bottom: 2rem;
+    
+    @media (min-width: 768px) {
+      font-size: 2.5rem;
+    }
+  }
+
+  .profile-card {
+    background: white;
+    border-radius: 1rem;
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1), 
+                0 4px 6px rgba(0, 0, 0, 0.05);
+    width: 100%;
+    max-width: 400px;
+    padding: 2rem;
+    
+    @media (min-width: 768px) {
+      padding: 2.5rem;
+      max-width: 500px;
+    }
+
+    .profile-field {
+      margin-bottom: 1.5rem;
+      
+      &:last-child {
+        margin-bottom: 0;
+      }
+
+      .label {
+        color: $text-secondary;
+        font-size: 0.875rem;
+        text-transform: uppercase;
+        letter-spacing: 0.05em;
+        margin-bottom: 0.5rem;
+      }
+
+      .value {
+        color: $text-primary;
+        font-size: 1rem;
+        font-weight: 500;
+        padding-bottom: 0.75rem;
+        border-bottom: 1px solid #e2e8f0;
+        
+        @media (min-width: 768px) {
+          font-size: 1.125rem;
+        }
+      }
+    }
+  }
+
+  .loading {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 200px;
+    width: 100%;
+    color: $text-secondary;
+    font-size: 1rem;
+    
+    @media (min-width: 768px) {
+      font-size: 1.125rem;
+    }
+  }
+}

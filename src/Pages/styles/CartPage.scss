@@ -1,0 +1,127 @@
+$primary-color: #4a90e2;
+$text-primary: #2d3748;
+$text-secondary: #718096;
+$background-color: #f7fafc;
+$success-color: #38a169;
+$danger-color: #e53e3e;
+
+.cart-container {
+  min-height: 100vh;
+  background: $background-color;
+  padding: 2rem 1rem;
+
+  @media (min-width: 768px) {
+    padding: 3rem 2rem;
+  }
+
+  .cart-content {
+    max-width: 1200px;
+    margin: 0 auto;
+  }
+
+  .cart-empty {
+    text-align: center;
+    padding: 3rem;
+    background: white;
+    border-radius: 1rem;
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+
+    h2 {
+      color: $text-secondary;
+      font-size: 1.5rem;
+      margin-bottom: 1.5rem;
+    }
+  }
+
+  .cart-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 1rem;
+    margin-bottom: 2rem;
+    padding: 1.5rem;
+    background: white;
+    border-radius: 1rem;
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+
+    .cart-summary {
+      h2, h3 {
+        color: $text-primary;
+        margin: 0;
+      }
+
+      h2 {
+        font-size: 1.25rem;
+        margin-bottom: 0.5rem;
+      }
+
+      h3 {
+        font-size: 1.5rem;
+        color: $success-color;
+      }
+    }
+  }
+
+  .cart-items {
+    background: white;
+    border-radius: 1rem;
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+    overflow: hidden;
+    margin-bottom: 1.5rem;
+
+    .cart-item {
+      padding: 1rem;
+      border-bottom: 1px solid #e2e8f0;
+
+      &:last-child {
+        border-bottom: none;
+      }
+    }
+  }
+
+  .cart-buttons {
+    display: flex;
+    gap: 1rem;
+    flex-wrap: wrap;
+
+    .btn {
+      padding: 0.75rem 1.5rem;
+      border: none;
+      border-radius: 0.5rem;
+      font-size: 1rem;
+      font-weight: 500;
+      cursor: pointer;
+      transition: all 0.2s ease;
+
+      &-primary {
+        background: $primary-color;
+        color: white;
+
+        &:hover {
+          background: darken($primary-color, 5%);
+        }
+      }
+
+      &-danger {
+        background: $danger-color;
+        color: white;
+
+        &:hover {
+          background: darken($danger-color, 5%);
+        }
+      }
+
+      &-secondary {
+        background: white;
+        color: $text-primary;
+        border: 1px solid #e2e8f0;
+
+        &:hover {
+          background: #f8fafc;
+        }
+      }
+    }
+  }
+}
+

@@ -1,0 +1,124 @@
+// Variables
+$primary-color: #2563eb;
+$background-color: #f3f4f6;
+$text-color: #1f2937;
+$border-color: #e5e7eb;
+$spacing-unit: 1rem;
+$container-max-width: 1200px;
+$border-radius: 8px;
+$transition-duration: 0.3s;
+
+// Mixins
+@mixin container {
+  max-width: $container-max-width;
+  margin: 0 auto;
+  padding: 0 $spacing-unit;
+}
+
+@mixin card-shadow {
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+}
+
+@mixin flex-center {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+// HomePage Styles
+.home-page {
+  min-height: 100vh;
+  background-color: $background-color;
+  padding: $spacing-unit 0;
+
+  &__controls {
+    @include container;
+    margin-bottom: $spacing-unit * 2;
+  }
+
+  &__filters {
+    background-color: white;
+    border-radius: $border-radius;
+    padding: $spacing-unit;
+    @include card-shadow;
+    
+    display: flex;
+    flex-wrap: wrap;
+    gap: $spacing-unit;
+    align-items: center;
+    justify-content: space-between;
+
+    @media (max-width: 768px) {
+      flex-direction: column;
+      align-items: stretch;
+    }
+  }
+
+  &__filter {
+    flex: 1;
+    min-width: 200px;
+  }
+
+  &__sort {
+    min-width: 150px;
+  }
+
+  &__content {
+    @include container;
+    margin-bottom: $spacing-unit * 2;
+  }
+
+  &__products {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+    gap: $spacing-unit * 1.5;
+    
+    @media (max-width: 640px) {
+      grid-template-columns: 1fr;
+    }
+  }
+
+  &__pagination {
+    @include container;
+    @include flex-center;
+    margin-top: $spacing-unit * 2;
+  }
+}
+
+// Animation keyframes
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+// Optional: Add these utility classes if needed
+.fade-in {
+  animation: fadeIn 0.3s ease-out;
+}
+
+// Loading state
+.loading {
+  opacity: 0.7;
+  pointer-events: none;
+  transition: opacity $transition-duration ease;
+}
+
+// Empty state
+.empty-state {
+  text-align: center;
+  padding: $spacing-unit * 3;
+  color: lighten($text-color, 20%);
+}
+
+// Responsive container queries
+@container (min-width: 768px) {
+  .home-page__filters {
+    flex-direction: row;
+  }
+}
