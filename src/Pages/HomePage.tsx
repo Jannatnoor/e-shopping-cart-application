@@ -48,13 +48,6 @@ const HomePage: React.FC = () => {
     setPriceSort(priceSort === 'Low' ? 'High' : 'Low');
   };
 
-  const handleCategoryChange = (newCategory: unknown) => {
-  if (typeof newCategory === 'number') {
-    setCategory(newCategory);
-  }
-};
-
-
   return (
     <div className="home-page">
       <div className="home-page__controls">
